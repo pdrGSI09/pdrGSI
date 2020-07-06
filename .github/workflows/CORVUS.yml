@@ -1,0 +1,63 @@
+name: Corvus OS GSI
+
+on:
+#  release:
+#    types: [published]
+#  push:
+#    branches:
+#      - master
+#    paths:
+#      - '.config'
+#  schedule:
+#    - cron: 0 8 * * 5
+  watch:
+    types: [started]
+    
+env:
+  ROM: CorvusOS_pdrGSI_10
+  TZ: Brasil/São_Paulo
+  MIR: bit
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+       - name: Checkout
+         uses: actions/checkout@master
+           
+       - name: Initializing environment
+         run: |
+            sudo -E apt-get -qq update
+            sudo -E apt-get -qq install git openjdk-8-jdk wget
+       
+       - name: Clone ErfanGSI Source Code
+         run: git clone https://github.com/yukosky/ErfanGSIs -b runner
+       
+       - name: Setting up ErfanGSI requirements
+         run: |
+              sudo chmod -R 777 ErfanGSIs
+              cd ErfanGSIs
+              sudo bash setup.sh
+       
+       - name: Download Firmware & Generate GSI & Zip and Upload
+         run:  |
+               sudo ./ErfanGSIs/url2GSI.sh https://sourceforge.net/projects/corvus-os/files/riva/Corvus_v6.5-riva-22062020-OFFICIAL-1248.zip Generic:Corvus OS
+               mkdir final
+               
+               export date2=`date +%Y%m%d%H%M`
+               export sourcever2=`cat ./ErfanGSIs/ver`
+               sudo chmod -R 777 ErfanGSIs/output
+               
+               curl -sL https://git.io/file-transfer | sh
+               
+               zip -r ErfanGSIs/output/$ROM-Aonly-$sourcever2-$date2-ErfanGSI-YuMiGSI.7z ErfanGSIs/output/*-Aonly-*.img
+               ./transfer $MIR ErfanGSIs/output/$ROM-Aonly-$sourcever2-$date2-ErfanGSI-YuMiGSI.7z
+               
+               zip -r ErfanGSIs/output/$ROM-AB-$sourcever2-$date2-ErfanGSI-YuMiGSI.7z  ErfanGSIs/output/*-AB-*.img
+               ./transfer $MIR ErfanGSIs/output/$ROM-AB-$sourcever2-$date2-ErfanGSI-YuMiGSI.7z
+                  
+       - name: Print build info
+         run: |
+              cat ErfanGSIs/output/*-Aonly-*.txt
+              echo "--------"
+              cat ErfanGSIs/output/*-AB-*.txt

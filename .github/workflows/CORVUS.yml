@@ -41,7 +41,7 @@ jobs:
        
        - name: Download Firmware & Generate GSI & Zip and Upload
          run:  |
-               sudo ./ErfanGSIs/url2GSI.sh https://sourceforge.net/projects/corvus-os/files/riva/Corvus_v6.5-riva-22062020-OFFICIAL-1248.zip Generic:Corvus OS
+               sudo ./ErfanGSIs/url2GSI.sh https://sourceforge.net/projects/corvus-os/files/riva/Corvus_v6.5-riva-22062020-OFFICIAL-1248.zip Generic:CorvusOS
                mkdir final
                
                export date2=`date +%Y%m%d%H%M`

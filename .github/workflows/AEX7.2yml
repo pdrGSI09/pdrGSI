@@ -41,7 +41,7 @@ jobs:
        
        - name: Download Firmware & Generate GSI & Zip and Upload
          run:  |
-               sudo ./ErfanGSIs/url2GSI.sh https://qc5.androidfilehost.com/dl/zshLSW2C3MoL-Vm9HWaoVw/1594165313/4349826312261813352/AospExtended-v7.2-evert-20200518-1833-UNOFFICIAL.zip? Generic:AOSP Extended ROM
+               sudo ./ErfanGSIs/url2GSI.sh https://api.aospextended.com/download/X00TD/q/51ec33e251453d4b1ba96969b5ef7827a56a503be7e93475712b762f4682242179228ff352c5d108c7925c7e2f4a4c0bff0c Generic:AOSP Extended ROM
                mkdir final
                
                export date2=`date +%Y%m%d%H%M`

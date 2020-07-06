@@ -41,7 +41,7 @@ jobs:
        
        - name: Download Firmware & Generate GSI & Zip and Upload
          run:  |
-               sudo ./ErfanGSIs/url2GSI.sh https://oxygenos.oneplus.net/OnePlus6Oxygen_22_OTA_045_all_2004142201_bdd6fdc6b6b1477f.zip
+               sudo ./ErfanGSIs/url2GSI.sh https://oxygenos.oneplus.net/OnePlus6Oxygen_22_OTA_045_all_2004142201_bdd6fdc6b6b1477f.zip OxygenOS
                mkdir final
                
                export date2=`date +%Y%m%d%H%M`

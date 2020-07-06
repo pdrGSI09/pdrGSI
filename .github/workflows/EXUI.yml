@@ -41,8 +41,7 @@ jobs:
        
        - name: Download Firmware & Generate GSI & Zip and Upload
          run:  |
-               sudo ./ErfanGSIs/url2GSI.sh https://sourceforge.net/projects/extendedui/files/lavender/ExtendedUI_1.2.1_lavender-10.0-20200507-0725-OFFICIAL.zip/download
-               
+               sudo ./ErfanGSIs/url2GSI.sh https://sourceforge.net/projects/extendedui/files/lavender/ExtendedUI_1.2.1_lavender-10.0-20200507-0725-OFFICIAL.zip Generic:ExtendedUI 
                export date2=`date +%Y%m%d%H%M`
                export sourcever2=`cat ./ErfanGSIs/ver`
                sudo chmod -R 777 ErfanGSIs/output

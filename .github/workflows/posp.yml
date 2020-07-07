@@ -41,7 +41,7 @@ jobs:
        
        - name: Download Firmware & Generate GSI & Zip and Upload
          run:  |
-               sudo ./ErfanGSIs/url2GSI.shhttps://svwh.dl.sourceforge.net/project/posp/oneplus2/croquette/potato_oneplus2-10-20200619-croquette.v3.2.0%2B15.Official.zip Generic:Potato Open Sauce Project
+               sudo ./ErfanGSIs/url2GSI.sh https://svwh.dl.sourceforge.net/project/posp/oneplus2/croquette/potato_oneplus2-10-20200619-croquette.v3.2.0%2B15.Official.zip  Generic:Potato Open Sauce Project
                mkdir final
                
                export date2=`date +%Y%m%d%H%M`

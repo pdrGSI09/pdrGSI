@@ -1,4 +1,4 @@
-name: Xtended XQ V.10.5
+name: XTENDED XQ 10.5 GSI
 
 on:
 #  release:
@@ -14,7 +14,7 @@ on:
     types: [started]
     
 env:
-  ROM: XtendedXQ_V10.5_pdrGSI
+  ROM: XTENDEDXQ_10.5_pdrGSI
   TZ: Brasil/São_Paulo
   MIR: bit
 jobs:
@@ -40,7 +40,7 @@ jobs:
               sudo bash setup.sh
        
        - name: Download Firmware & Generate GSI & Zip and Upload
-         run:  
+         run:  |
                sudo ./ErfanGSIs/url2GSI.sh https://ufpr.dl.sourceforge.net/project/xtended/dumpling/Xtended-XQ-v10.5-dumpling-OFFICIAL-20200625.zip Generic:MSM-Xtended
                mkdir final
                
